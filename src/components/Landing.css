@@ -1,0 +1,32 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    background: rgb(201,243,255);
+    height: 125  px;
+}
+
+.logo {
+    display: 'flex';
+    
+}
+
+.logoImg {
+    margin-left: 30px;
+    height: 100px;
+    width: 100px;
+}
+.binder {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.signIn {
+    margin-top: 50px;;
+}
+
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-left: 800px;
+}
+

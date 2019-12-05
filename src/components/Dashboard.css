@@ -1,0 +1,39 @@
+.dashDiv {
+    display: flex;
+    justify-content: start;
+}
+
+
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    background: rgb(201,243,255);
+    height: 200vh;
+    width: 150px;
+    padding: 10px;
+}
+
+.dashHeader {
+    font-size: 45px;
+    font-weight: bold;
+    
+}
+
+.note {
+    margin-top: 35px;
+    margin-left: 100px;
+}
+
+button {
+    border-radius: 8px;
+    padding: 5px;
+    margin: 3px;
+}
+
+button:hover {
+    background: white;
+}
+
+.logoImg {
+margin-right: 20px;
+}

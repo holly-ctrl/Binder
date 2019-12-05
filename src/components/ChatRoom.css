@@ -1,0 +1,13 @@
+.chatContainer {
+    display: flex;
+}
+
+.chatroom {
+    border: solid;
+    border-radius: 25px;
+    border-color: grey;
+    height: 600px;
+    width: 800px;
+    margin-top: 60px;
+    margin-left: 130px;
+}

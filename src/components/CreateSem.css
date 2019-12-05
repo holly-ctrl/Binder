@@ -1,0 +1,11 @@
+.inputs {
+    font-size: 25px;
+}
+
+.create {
+    border: solid;
+    border-radius: 25px;
+    border-color: grey;
+    padding: 20px;
+    margin-top: 50px;
+}

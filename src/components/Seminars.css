@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    
+}
+
+.semz {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mySems {
+    border: solid;
+    border-radius: 25px;
+    border-color: grey;
+    width: 800px;
+    height: 400px;
+    font-size: 30px;
+    margin-left: 350px;
+}
+
+.lowerBoxes {
+    display: flex;
+    margin-left: 100px;
+}
+
+.findSem {
+    border: solid;
+    border-radius: 25px;
+    border-color: grey;
+    margin-top: 50px;
+    padding: 20px;
+    margin-left: 20px;
+    width: 600px;
+    height: 200px;
+}
+
+.findSemInputs {
+    display: flex;
+    flex-direction: column; 
+}
+
+.search {
+    width: 70px;
+    margin-left: 260px;
+}
