@@ -11,7 +11,7 @@ class Seminars extends Component {
         this.state = {
             seminarName: '',
             subject: '',
-            allSems: []
+            allSems: [],
         }
 
         this.onSeminarNameChange = this.onSeminarNameChange.bind(this)

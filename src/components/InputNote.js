@@ -19,7 +19,7 @@ class InputNote extends Component {
                 </form>
                 <button onClick={ () => {
                     this.props.togglePopup()
-                    this.props.onCreateNoteClick()}} class='save'>Save </button>
+                    }} class='save'>Save </button>
             </div>
         )
     }

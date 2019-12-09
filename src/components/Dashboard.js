@@ -75,10 +75,10 @@ class Dashboard extends Component {
         })
     }
 
-    onCreateNoteClick() {
+    onCreateNoteClick(subject) {
         axios 
             .post('/api/createNote', {
-                noteSubject: this.state.noteSubject,
+                noteSubject: subject,
                 title: this.state.title,
                 date: this.state.date,
                 questions: this.state.questions,
@@ -114,7 +114,7 @@ class Dashboard extends Component {
                     
                     </div>
                 </div>
-                {this.state.showPopup && <DashPop closePopup={this.togglePopup}/>}
+                {this.state.showPopup && <DashPop closePopup={this.togglePopup} onCreateNoteClick={this.onCreateNoteClick}/>}
             </div>
         )
     }
