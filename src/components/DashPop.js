@@ -10,10 +10,10 @@ class DashPop extends Component {
         return (
             <div className='popup'>
                 <div className='innerPop' >
-                    <Link to='/notes'><button className='butt' onClick= {() => {this.props.onCreateNoteClick()}}>Math</button></Link>
-                    <Link to='/notes'><button className='butt' >Science</button></Link>
-                    <Link to='/notes'><button className='butt' >Language Arts</button></Link>
-                    <Link to='/notes'><button className='butt'>Social Studies</button></Link>
+                    <Link to='/notes'><button className='butt' onClick= {() => {this.props.onCreateNoteClick(1)}}>Math</button></Link>
+                    <Link to='/notes'><button className='butt' onClick= {() => {this.props.onCreateNoteClick(2)}}>Science</button></Link>
+                    <Link to='/notes'><button className='butt' onClick= {() => {this.props.onCreateNoteClick(3)}}>Language Arts</button></Link>
+                    <Link to='/notes'><button className='butt' onClick= {() => {this.props.onCreateNoteClick(4)}}>Social Studies</button></Link>
                     <button className='x' onClick={this.props.closePopup}>X</button>
                 </div>
             </div>

@@ -19,9 +19,9 @@ module.exports = {
     },
     createNote: (req, res) => {
         const db = req.app.get('db')
-        const { noteSubject, title, date, questions, notes, summary } = req.body
+        const {title, date, questions, notes, summary, sub_id } = req.body
 
-        db.add_note(noteSubject, title, date, questions, notes, summary)
+        db.add_note(title, date, questions, notes, summary, sub_id)
             .then(result => {
                 res.status(200).send(result)
             })
@@ -34,4 +34,38 @@ module.exports = {
     
         res.status(200).send(new_data)
     }, 
+    getAllMathN: (req, res) => {
+        const db = req.app.get('db')
+
+        db.get_all_math_notes()
+            .then(result => {
+                res.status(200).send(result)
+            })
+    },
+    getAllNotes: (req, res) => {
+        const db = req.app.get('db')
+
+        db.get_all_notes()
+            .then(result => {
+                res.status(200).send(result)
+            })
+    },
+    deleteNote: (req, res) => {
+        const {id} = req.params 
+        const db = req.app.get('db')
+        db.delete_note(id)
+        .then(data => 
+        res.status(200).send(data))
+    },
+    editNote: (req, res) => {
+        console.log(req.body)
+        const db = req.app.get('db')
+        const {id} = req.params
+        const{title, date, questions, notes, summary } = req.body
+
+        console.log(+id)
+        db.edit_note([ title, date, questions, notes, summary, +id])
+        .then(data =>
+            res.status(200).send(data))
+    }
 }

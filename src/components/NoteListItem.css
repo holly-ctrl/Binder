@@ -1,0 +1,32 @@
+#not {
+    height:600px;
+    width: 750px;
+}
+
+#que {
+    height: 600px;
+    width: 200px
+}
+
+#sum {
+    width: 959px;
+    height: 80px
+}
+
+form {
+    border: solid;
+    border-radius: 25px;
+    border-color: grey;
+    padding: 25px;
+}
+
+.save {
+    width: 80px;
+    height: 40px;
+}
+
+.con {
+    display: flex;
+    margin-left: 300px;
+}
+

@@ -7,7 +7,6 @@ const authCtrl = require('./controllers/authController')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express()
-
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
@@ -22,6 +21,10 @@ app.post('/api/createSem', ctrl.createSem)
 app.get('/api/getAllSeminars', ctrl.getAllSemz)
 app.post('/api/createNote', ctrl.createNote)
 app.delete(`/api/deleteS/:id`, ctrl.deleteSem)
+app.get('/api/getAllMath', ctrl.getAllMathN)
+app.get('/api/getAllNotes', ctrl.getAllNotes)
+app.delete('/api/deleteN/:id', ctrl.deleteNote)
+app.put('/api/editNote/:id', ctrl.editNote)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)

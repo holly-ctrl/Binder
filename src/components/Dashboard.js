@@ -78,16 +78,17 @@ class Dashboard extends Component {
     onCreateNoteClick(subject) {
         axios 
             .post('/api/createNote', {
-                noteSubject: subject,
                 title: this.state.title,
                 date: this.state.date,
                 questions: this.state.questions,
                 notes: this.state.notes,
-                summary: this.state.summary
+                summary: this.state.summary,
+                sub_id: subject
             })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
+
 
     render() {
         console.log(this.state)
@@ -97,6 +98,7 @@ class Dashboard extends Component {
                     <img className='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' />
                     <Link to='/notes'><button>Notes</button></Link>
                     <Link to='/seminars'><button>Seminars</button></Link>
+                    <Link to='/'><button>Log Out</button></Link>
                 </div>
                 <div>
                 <header class='dashHeader'>Welcome, start taking notes... </header>

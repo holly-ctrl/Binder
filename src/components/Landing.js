@@ -40,24 +40,20 @@ class Landing extends Component {
             <div>
                 
                 <nav>
-                    <div class='logo'>
-                        <img class='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' />
-                        <h1 class='binder'>
+                    <div className='logo'>
+                        <img className='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' />
+                        <h1 className='binder'>
                             Binder
                         </h1>
                     </div>
-                    <div class='signIn'>
+                    <div className='signIn'>
                         <input placeholder='email'/>
                         <input placeholder='password'/>
-                        <button onClick={() => this.login()}>
-                            <Link to='/dashboard'>Login</Link>
-                        </button>
+                        <Link to='/dashboard'><button onClick={() => this.login()}>Login</button></Link>
                     </div>
                 </nav>
-                <div class='signUpForm'>
+                <div className='signUpForm'>
                     <h3>Create Profile</h3>
-                    <input placeholder='First Name'></input>
-                    <input placeholder='Last Name'></input>
                     <input onChange={e => this.setState({ emailInput: e.target.value })}
                             type="text" placeholder='Email'/>
                     <input onChange={e => this.setState({ passwordInput: e.target.value })}
