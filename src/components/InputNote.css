@@ -14,10 +14,9 @@
 }
 
 form {
-    border: solid;
-    border-radius: 25px;
-    border-color: grey;
+    border-style: outset;
     padding: 25px;
+    background-color:white;
 }
 
 .save {

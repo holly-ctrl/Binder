@@ -65,11 +65,11 @@ onSubjectChange(e) {
     render() {
         return(
             <div class='container'>
-                <div className='sideBar'>
-                        <Link to='/dashboard'><img className='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' /></Link>
-                        <Link to='/notes'><button>Notes</button></Link>
-                        <Link to='/seminars'><button>Seminars</button></Link>
-                        <Link to='/'><button>Log Out</button></Link>
+                <div class='sideBar'>
+                    <Link to='/dashboard'><img class='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' /></Link>
+                    <Link to='/notes'><img className='not' src='https://cdn.iconscout.com/icon/free/png-256/pencil-60-119100.png'/></Link>
+                    <Link to='/seminars'><img className='semm' src='https://crosbycc.org/wp-content/uploads/2019/06/group-icon-png-7.png'/></Link>
+                    {/* <Link to='/'><button>Log Out</button></Link> */}
                 </div>
                 <div class='semz'>
                     <div className='mySems'>

@@ -25,14 +25,26 @@ class Landing extends Component {
         })
       }
 
-      async login() {
-        let res = await axios.post('/auth/login', {
-          email: this.state.emailInput,
-          password: this.state.passwordInput
+      login() {
+         axios.post('/auth/login', {
+        email: this.state.emailInput,
+        password: this.state.passwordInput
         })
-        this.setState({
-          user: res.data.userData
+        .then((res)=> {
+            this.setState({
+                user: res.data.userData
+              })
         })
+        
+      }
+
+      handleEmailInput(value) {
+          this.setState({emailInput: value})
+      }
+
+      handlePasswordInput(value) {
+          console.log(value)
+          this.setState({passwordInput: value})
       }
 
     render() {
@@ -40,27 +52,27 @@ class Landing extends Component {
             <div>
                 
                 <nav>
-                    <div className='logo'>
-                        <img className='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' />
-                        <h1 className='binder'>
-                            Binder
-                        </h1>
-                    </div>
+                    <h1 className='binder'>
+                        Binder
+                    </h1>
                     <div className='signIn'>
-                        <input placeholder='email'/>
-                        <input placeholder='password'/>
+                        <input value={this.state.emailInput} placeholder='email' onChange={e => this.handleEmailInput(e.target.value)} />
+                        <input value={this.state.passwordInput} placeholder='password' onChange={e => this.handlePasswordInput(e.target.value)} />
                         <Link to='/dashboard'><button onClick={() => this.login()}>Login</button></Link>
                     </div>
                 </nav>
                 <div className='signUpForm'>
                     <h3>Create Profile</h3>
                     <input onChange={e => this.setState({ emailInput: e.target.value })}
-                            type="text" placeholder='Email'/>
+                            type="text" placeholder='Email'/><br/>
                     <input onChange={e => this.setState({ passwordInput: e.target.value })}
                             type="password" placeholder='Password'/>
-                    <button onClick={() => this.signup()}>
+                    <button className='sb' onClick={() => this.signup()}>
                         Sign Up
                     </button>
+                </div>
+                <div>
+                        Donate!... Its for the children! <button>Donate</button>
                 </div>
             </div>
         )

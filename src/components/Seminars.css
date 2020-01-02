@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    
+    background: rgb(240, 240, 240);
 }
 
 .semz {
@@ -11,28 +11,28 @@
 
 .mySems {
     border: solid;
-    border-radius: 25px;
-    border-color: grey;
-    width: 800px;
+    border-style: outset;
+    width: 1000px;
     height: 400px;
     font-size: 30px;
     margin-left: 350px;
+    background: white;
 }
 
 .lowerBoxes {
-    display: flex;
+    /* display: flex; */
     margin-left: 100px;
 }
 
 .findSem {
     border: solid;
-    border-radius: 25px;
-    border-color: grey;
+    border-style: outset;
     margin-top: 50px;
     padding: 20px;
     margin-left: 20px;
-    width: 600px;
+    width: 1000px;
     height: 200px;
+    background: white;
 }
 
 .findSemInputs {

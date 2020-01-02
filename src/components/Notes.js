@@ -14,21 +14,10 @@ class Notes extends Component {
             sciNotes: [],
             laNotes: [],
             ssNotes: [],
-            title: '',
-            date: '',
-            questions: '',
-            notes: '',
-            summary: '',
-            showPop: false
         }
 
-        this.deleteNote = this.deleteNote.bind(this)
         this.updateNote = this.updateNote.bind(this)
-        this.handleEditTitleChange = this.handleEditTitleChange.bind(this)
-        this.handleEditDateChange = this.handleEditDateChange.bind(this)
-        this.handleEditQuestionsChange = this.handleEditQuestionsChange.bind(this)
-        this.handleEditNotesChange = this.handleEditNotesChange.bind(this)
-        this.handleEditSummaryChange = this.handleEditSummaryChange.bind(this)
+        this.deleteNote = this.deleteNote.bind(this)
     }
 
     componentDidMount() {
@@ -73,15 +62,14 @@ class Notes extends Component {
             })}
     }
 
-    updateNote(id) {
-        console.log(id)
+    updateNote(id, title, date, questions, notes, summary) {
         axios
             .put(`/api/editNote/${id}`, {
-                title: this.state.title,
-                date: this.state.date,
-                questions: this.state.questions,
-                notes: this.state.notes,
-                summary: this.state.summary
+                title,
+                date,
+                questions,
+                notes,
+                summary
             })
             .then(res => {
                 const mathNotes = res.data.filter(note => note.sub_id === 1)
@@ -97,42 +85,13 @@ class Notes extends Component {
     })
 }
 
-handleEditTitleChange(e) {
-    this.setState({
-        title: e.target.value
-    })
-}
-
-handleEditDateChange(e) {
-    this.setState({
-        date: e.target.value
-    })
-}
-
-handleEditQuestionsChange(e) {
-    this.setState({
-        questions: e.target.value
-    })
-}
-
-handleEditNotesChange(e) {
-    this.setState({
-        notes: e.target.value
-    })
-}
-
-handleEditSummaryChange(e) {
-    this.setState({
-        summary: e.target.value
-    })
-}
 
     deleteNote(id) {
         axios
             .delete(`/api/deleteN/${id}`)
             .then((res) => {
                 console.log(res.data)
-                const mathNotes = res.data.filter(note => note.sub_id === 1)
+                const mathNotes = res.data.filter(note => note.sub_id ===1)
                 const sciNotes = res.data.filter(note => note.sub_id === 2)
                 const laNotes = res.data.filter(note => note.sub_id === 3)
                 const ssNotes = res.data.filter(note => note.sub_id === 4)
@@ -151,9 +110,9 @@ handleEditSummaryChange(e) {
             <div className='ccontainer'>
                 <div class='sideBar'>
                     <Link to='/dashboard'><img class='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' /></Link>
-                    <Link to='/notes'><button>Notes</button></Link>
-                    <Link to='/seminars'><button>Seminars</button></Link>
-                    <Link to='/'><button>Log Out</button></Link>
+                    <Link to='/notes'><img className='not' src='https://cdn.iconscout.com/icon/free/png-256/pencil-60-119100.png'/></Link>
+                    <Link to='/seminars'><img className='semm' src='https://crosbycc.org/wp-content/uploads/2019/06/group-icon-png-7.png'/></Link>
+                    {/* <Link to='/'><button>Log Out</button></Link> */}
                 </div>
                 <div className='body'>
                         <h1>Notes</h1> 
@@ -162,6 +121,7 @@ handleEditSummaryChange(e) {
                             <h2>Math</h2>
                                 {this.state.mathNotes.map((mNote) => (
                                 <NoteListItem 
+                                key={mNote.id}
                                 id={mNote.id} 
                                 title={mNote.title} 
                                 date={mNote.date} 
@@ -175,11 +135,6 @@ handleEditSummaryChange(e) {
                                 handleEditQuestionsChange = {this.handleEditQuestionsChange}
                                 handleEditNotesChange = {this.handleEditNotesChange}
                                 handleEditSummaryChange = {this.handleEditSummaryChange}
-                                stateTitle={this.state.title}
-                                stateDate={this.state.date}
-                                stateQuestions={this.state.questions}
-                                stateNotes={this.state.notes}
-                                stateSummary={this.state.summary}
                                 />
                             ))}
                         </div>
@@ -187,6 +142,7 @@ handleEditSummaryChange(e) {
                             <h2>Science</h2>
                                 {this.state.sciNotes.map((mNote) => (
                                 <NoteListItem 
+                                key={mNote.id}
                                 id={mNote.id} 
                                 title={mNote.title} 
                                 date={mNote.date} 
@@ -207,6 +163,7 @@ handleEditSummaryChange(e) {
                         <h2>Language Art</h2>
                             {this.state.laNotes.map((mNote) => (
                             <NoteListItem 
+                            key={mNote.id}
                             id={mNote.id} 
                             title={mNote.title} 
                             date={mNote.date} 
@@ -227,6 +184,7 @@ handleEditSummaryChange(e) {
                         <h2>Social Studies</h2>
                             {this.state.ssNotes.map((mNote) => (
                             <NoteListItem
+                            key={mNote.id}
                             id={mNote.id} 
                             title={mNote.title} 
                             date={mNote.date} 

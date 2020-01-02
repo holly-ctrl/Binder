@@ -13,12 +13,6 @@
     height: 80px
 }
 
-form {
-    border: solid;
-    border-radius: 25px;
-    border-color: grey;
-    padding: 25px;
-}
 
 .save {
     width: 80px;
@@ -28,5 +22,22 @@ form {
 .con {
     display: flex;
     margin-left: 300px;
+}
+
+.item-container {
+    display: flex;
+    border-style: outset;
+    padding: 10px;
+    margin: 5px;
+    width: 900px;
+    justify-content: space-between;
+}
+
+.editb {
+    height: 45px;
+}
+
+.deleteb {
+    height: 35px;
 }
 

@@ -54,16 +54,15 @@ module.exports = {
         const {id} = req.params 
         const db = req.app.get('db')
         db.delete_note(id)
-        .then(data => 
-        res.status(200).send(data))
+        .then(data => res.status(200).send(data))
     },
     editNote: (req, res) => {
-        console.log(req.body)
+        // console.log(req.body)
         const db = req.app.get('db')
         const {id} = req.params
         const{title, date, questions, notes, summary } = req.body
 
-        console.log(+id)
+        // console.log(+id)
         db.edit_note([ title, date, questions, notes, summary, +id])
         .then(data =>
             res.status(200).send(data))
