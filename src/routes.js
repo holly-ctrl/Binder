@@ -5,6 +5,7 @@ import Landing from './components/Landing'
 import Notes from './components/Notes'
 import Seminars from './components/Seminars'
 import ChatRoom from './components/ChatRoom'
+import LoginError from './components/LoginError'
 
 export default (
     <Switch>
@@ -13,5 +14,6 @@ export default (
         <Route path='/notes' component={Notes}/>
         <Route path='/seminars' component={Seminars}/>
         <Route path='/chatroom' component={ChatRoom}/>
+        <Route path='/loginError' component={LoginError}/>
     </Switch>
 )

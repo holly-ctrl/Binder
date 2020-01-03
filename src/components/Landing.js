@@ -3,6 +3,8 @@ import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
 import './Landing.css'
+import {connect} from 'react-redux'
+import {setUser} from '../ducks/reducer'
 
 
 class Landing extends Component {
@@ -27,18 +29,24 @@ class Landing extends Component {
         })
       }
 
-      login() {
-         axios.post('/auth/login', {
-        email: this.state.emailInput,
-        password: this.state.passwordInput
+    async login() {
+        const {emailInput, passwordInput} = this.state
+
+        axios.post('/auth/login', {
+        email: emailInput,
+        password: passwordInput
+        }).then((res) => {
+            console.log(res.data)
+            if (res.data.message === 'logged in') {
+                this.props.setUser(res.data.userData)
+                this.props.history.push('/dashboard')
+            } else {
+                this.props.history.push({pathname: '/loginError', state: { message:  res.data.message}})
+            }
         })
-        .then((res)=> {
-            this.setState({
-                user: res.data.userData
-              })
-        })
-        
       }
+
+    
 
       handleEmailInput(value) {
           this.setState({emailInput: value})
@@ -69,6 +77,7 @@ class Landing extends Component {
       }
 
     render() {
+        console.log('this.props', this.props)
         return(
             <div className='hey'>
                 
@@ -79,7 +88,7 @@ class Landing extends Component {
                     <div className='signIn'>
                         <input value={this.state.emailInput} placeholder='email' onChange={e => this.handleEmailInput(e.target.value)} />
                         <input value={this.state.passwordInput} placeholder='password' onChange={e => this.handlePasswordInput(e.target.value)} />
-                        <Link to='/dashboard'><button onClick={() => this.login()}>Login</button></Link>
+                        <button onClick={() => this.login()}>Login</button>
                     </div>
                 </nav>
                 <div className='signUpForm'>
@@ -108,6 +117,7 @@ class Landing extends Component {
                     >
                     <button>Donate</button>
                     </StripeCheckout>
+                        $
                         <input 
                         value={this.state.amount}
                         type='number'
@@ -118,4 +128,4 @@ class Landing extends Component {
     }
 }
 
-export default withRouter(Landing)
+export default withRouter(connect(null, {setUser}) (Landing))

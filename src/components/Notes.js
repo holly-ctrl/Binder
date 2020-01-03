@@ -4,6 +4,7 @@ import NoteListItem from './NoteListItem'
 import NotePop from './NotePop'
 import './Notes.css'
 import axios from 'axios'
+import {connect} from 'react-redux'
 
 class Notes extends Component {
     constructor() {
@@ -104,8 +105,19 @@ class Notes extends Component {
             })
     }
 
+    logout() {
+        axios.delete('/auth/logout')
+        
+        .then((res) => {
+            console.log(res.data.message)
+            if(res.data.message === 'logged out') {
+                this.props.history.push('/')
+            } 
+        })
+    }
 
     render() {
+        console.log(this.props)
         return (
             <div className='ccontainer'>
                 <div class='sideBar'>
@@ -202,10 +214,16 @@ class Notes extends Component {
                         </div>
                     </div>
                 </div>
-                <Link to='/'><button>Log Out</button></Link>
+                <button className='logout' onClick={() => this.logout()} >Log Out</button>
             </div>
         )
     }
 }
 
-export default Notes
+function mapStateToProps(state) {
+    return {
+        state
+    }
+}
+
+export default connect(mapStateToProps) (Notes)

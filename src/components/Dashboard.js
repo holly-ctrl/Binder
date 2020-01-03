@@ -5,6 +5,7 @@ import InputNote from './InputNote'
 import DashPop from './DashPop'
 import './Dashboard.css'
 import Axios from 'axios'
+import {connect} from 'react-redux'
 
 
 
@@ -89,6 +90,17 @@ class Dashboard extends Component {
             .catch(err => console.log(err))
     }
 
+    logout() {
+        axios.delete('/auth/logout')
+        
+        .then((res) => {
+            console.log(res.data.message)
+            if(res.data.message === 'logged out') {
+                this.props.history.push('/')
+            } 
+        })
+    }
+
 
     render() {
         console.log(this.state)
@@ -117,11 +129,17 @@ class Dashboard extends Component {
                 </div>
                 {this.state.showPopup && <DashPop closePopup={this.togglePopup} onCreateNoteClick={this.onCreateNoteClick}/>}
                 
-                <Link to='/'><button>Log Out</button></Link>
+                <button className='logout' onClick={() => this.logout()} >Log Out</button>
 
             </div>
         )
     }
 }
 
-export default withRouter(Dashboard)
+function mapStateToProps(state) {
+    return {
+        state
+    }
+}
+
+export default withRouter( connect(mapStateToProps) (Dashboard))
