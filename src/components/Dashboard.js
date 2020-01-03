@@ -97,8 +97,7 @@ class Dashboard extends Component {
                 <div class='sideBar'>
                     <img className='logoImg' src='https://user-images.githubusercontent.com/25514513/39216803-fa84ab40-47d1-11e8-8ebe-9d69b9e484b4.png' />
                     <Link to='/notes'><img className='not' src='https://cdn.iconscout.com/icon/free/png-256/pencil-60-119100.png'/></Link>
-                    <Link to='/seminars'><img className='semm' src='https://crosbycc.org/wp-content/uploads/2019/06/group-icon-png-7.png'/></Link>
-                    {/* <Link to='/'><button>Log Out</button></Link> */}
+                    {/* <Link to='/seminars'><img className='semm' src='https://crosbycc.org/wp-content/uploads/2019/06/group-icon-png-7.png'/></Link> */}
                 </div>
                 <div>
                 <header class='dashHeader'>Welcome, start taking notes... </header>
@@ -117,6 +116,9 @@ class Dashboard extends Component {
                     </div>
                 </div>
                 {this.state.showPopup && <DashPop closePopup={this.togglePopup} onCreateNoteClick={this.onCreateNoteClick}/>}
+                
+                <Link to='/'><button>Log Out</button></Link>
+
             </div>
         )
     }

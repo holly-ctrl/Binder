@@ -1,3 +1,8 @@
+.hey {
+    background-color: rgb(240, 240, 240);
+    height: 200vh;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -26,6 +31,7 @@ nav {
     width: 400px;
     height: 200px;
     padding: 50px;
+    background: white;
 }
 
 .sb {

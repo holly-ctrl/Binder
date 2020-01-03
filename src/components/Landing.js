@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
+import StripeCheckout from 'react-stripe-checkout'
 import './Landing.css'
 
 
@@ -11,7 +12,8 @@ class Landing extends Component {
         this.state= {
             emailInput: '',
             passwordInput: '',
-            user: {}
+            user: {},
+            amount: 0
         }
     }
 
@@ -47,9 +49,28 @@ class Landing extends Component {
           this.setState({passwordInput: value})
       }
 
+      onOpened = () => {
+        console.log('this is opened')
+      }
+
+      onClosed = () => {
+          console.log('this is closed')
+      }
+
+      onToken = (token) => {
+          console.log(token)
+          let {amount} = this.state
+          amount /= 100
+          console.log(amount)
+          token.card = void 0 
+          axios.post('/api/payment', {token, amount: this.state.amount}).then(res => {
+              alert(`Congratulations you paid Kevin ${amount}`)
+          })
+      }
+
     render() {
         return(
-            <div>
+            <div className='hey'>
                 
                 <nav>
                     <h1 className='binder'>
@@ -72,7 +93,25 @@ class Landing extends Component {
                     </button>
                 </div>
                 <div>
-                        Donate!... Its for the children! <button>Donate</button>
+                    <StripeCheckout
+                        name='Class'
+                        stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                        token={this.onToken}
+                        amount={this.state.amount}
+                        currency='USD'
+                        panelLabel='Submit Payment'
+                        locale='en'
+                        opened={this.onOpened}
+                        closed={this.onClosed}
+                        billingAddress={false}
+                        zipCode={false}
+                    >
+                    <button>Donate</button>
+                    </StripeCheckout>
+                        <input 
+                        value={this.state.amount}
+                        type='number'
+                        onChange={ e => this.setState({amount: +e.target.value})}/>
                 </div>
             </div>
         )

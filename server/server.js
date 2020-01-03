@@ -28,6 +28,8 @@ app.get('/api/getAllNotes', ctrl.getAllNotes)
 app.delete('/api/deleteN/:id', ctrl.deleteNote)
 app.put('/api/editNote/:id', ctrl.editNote)
 
+app.post('/api/payment', ctrl.pay)
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
     app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))
