@@ -15,6 +15,7 @@ app.use(session({
     resave: true,
     saveUninitialized: false
 }))
+app.use( express.static( `${__dirname}/../build` ) )
 
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
