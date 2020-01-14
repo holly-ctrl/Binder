@@ -4,7 +4,6 @@ import axios from 'axios'
 import InputNote from './InputNote'
 import DashPop from './DashPop'
 import './Dashboard.css'
-import Axios from 'axios'
 import {connect} from 'react-redux'
 
 
